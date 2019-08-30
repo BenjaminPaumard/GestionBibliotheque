@@ -74,7 +74,7 @@ public class Livre {
         {           
             Connection cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root","");
             Statement st=cn.createStatement();
-            ResultSet rs=st.executeQuery("select * from book Where Wording like '"+nomlivre+"'");
+            ResultSet rs=st.executeQuery("select * from book Where Wording like '%"+nomlivre+"%'");
             
             while(rs.next())
             {

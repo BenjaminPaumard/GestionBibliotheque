@@ -48,27 +48,48 @@ public class Fenetre extends JFrame{
 	  Fenetre searchResult = new Fenetre();
 	  JPanel pan = new JPanel();
 	  	JButton bouton = new JButton("Rechercher");
+	  	pan.add(bouton);
 	  	pan.setLayout(null);
 	  	bouton.setBounds(100, 100, 100, 100);
 		JTextField textField = new JTextField();
-		textField.setPreferredSize( new Dimension( 50, 20 ) );
+		textField.setPreferredSize( new Dimension( 100, 50 ) );
+		textField.setLocation(27, 200);
 		pan.add(textField);
 		JLabel lab = new JLabel("Resultat de votre recherche : "+nomlivre);
 		pan.add(lab);
-		lab.setLocation(27, 20);
-		lab.setSize(86, 14);
+		lab.setLocation(27, 200);
+		lab.setSize(400, 14);
 		
 
 		searchResult.setTitle("Résultat recherche");
+		int coo = 220;
 	    for (int i = 0; i < array.size(); i++) {
 	    	
 	    	JLabel labList = new JLabel("<html>"+array.get(i).toString()+"<br/></html>");
 			pan.add(labList);
+			labList.setLocation(27, coo);
+			labList.setSize(400, 14);
+			coo += 20;
 	      }
 		searchResult.setSize(800, 500);
 		searchResult.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		searchResult.setLocationRelativeTo(null);
-
+		String author = null;
+		try
+        {           
+            Connection cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root","");
+            Statement st=cn.createStatement();
+            ResultSet rs=st.executeQuery("select * from book Where Wording like '%"+nomlivre+"%'");
+            
+            while(rs.next())
+            {
+            	
+            }
+        }
+        catch(SQLException e)
+        {
+           System.out.println(e);
+        }
 
 	    bouton.addActionListener(new ActionListener() {
 
@@ -79,7 +100,7 @@ public class Fenetre extends JFrame{
 	        }
 	    });
 	    
-	    pan.add(bouton);
+	    
 	    searchResult.setContentPane(pan);
 	    searchResult.setVisible(true);
 
