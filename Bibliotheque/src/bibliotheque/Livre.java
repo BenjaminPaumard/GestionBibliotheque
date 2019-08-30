@@ -57,7 +57,7 @@ public class Livre {
 	}
 	
 	public void setQuantite(int quantite){
-		this.titre = quantite;
+		this.quantite = quantite;
 	}
 	
 	public boolean getDisponible(){
@@ -75,7 +75,10 @@ public class Livre {
 	public void louercalcul()
 	{
 		//depuis la classe client !
-		this.quantite -= 1;  
+		this.quantite -= 1;
+		if(this.quantite == 0) {
+			this.disponible = false;
+		}
 	}
 	
 	public static void main(String[] args) {
