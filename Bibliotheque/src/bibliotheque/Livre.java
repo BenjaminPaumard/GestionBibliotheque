@@ -7,14 +7,17 @@ public class Livre {
 	private Auteur auteur;
 	private String editeur;
 	private Date datesortie;
+	private int quantite;
+	private boolean disponible;
 	
-	public Livre(String titre, Auteur auteur, String editeur, Date datesortie)
+	public Livre(String titre, Auteur auteur, String editeur, Date datesortie , int quantite , boolean disponible)
 	{
 		this.titre = titre;
 		this.auteur = auteur;
 		this.editeur = editeur;
 		this.datesortie = datesortie;
-		
+		this.quantite = quantite;
+		this.disponible = disponible;
 	}
 	
 	public String getTitre(){
@@ -47,6 +50,35 @@ public class Livre {
 	
 	public void setDatesortie(Date datesortie){
 		this.datesortie = datesortie;
+	}
+	
+	public int getQuantite(){
+		return this.quantite;
+	}
+	
+	public void setQuantite(int quantite){
+		this.quantite = quantite;
+	}
+	
+	public boolean getDisponible(){
+		return this.disponible;
+	}
+	
+
+	/*
+	public void rechercher(nomlivre)
+	{
+		
+		
+	}
+	*/
+	public void louercalcul()
+	{
+		//depuis la classe client !
+		this.quantite -= 1;
+		if(this.quantite == 0) {
+			this.disponible = false;
+		}
 	}
 	
 	public static void main(String[] args) {

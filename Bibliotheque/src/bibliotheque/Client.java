@@ -31,6 +31,7 @@ public class Client {
 	
 	public void louerUnLivre(Livre livre) {
 		this.listeLivreLouer.add(livre);
+		livre.louercalcul();
 	}
 	
 	public void rendreLivre(int id){
