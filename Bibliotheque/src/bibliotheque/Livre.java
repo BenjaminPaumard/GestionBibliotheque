@@ -1,6 +1,7 @@
 package bibliotheque;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Livre {
 	private String titre;
@@ -65,13 +66,27 @@ public class Livre {
 	}
 	
 
-	/*
-	public void rechercher(nomlivre)
+	
+	public static String rechercher(String nomlivre)
 	{
-		
-		
+		try
+        {           
+            Connection cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root","");
+            Statement st=cn.createStatement();
+            ResultSet rs=st.executeQuery("select * from book");
+            while(rs.next())
+            {
+                System.out.println(rs.getString("Wording"));
+            }
+        }
+        catch(SQLException e)
+        {
+           System.out.println(e);
+        }
+		return "coucou";
 	}
-	*/
+	
+	
 	public void louercalcul()
 	{
 		//depuis la classe client !

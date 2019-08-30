@@ -34,6 +34,7 @@ public class Fenetre extends JFrame{
         public void actionPerformed(ActionEvent e) {
         	String x = textField.getText();
         	System.out.println (x);
+        	Livre.rechercher(x);
         }
     });
     
