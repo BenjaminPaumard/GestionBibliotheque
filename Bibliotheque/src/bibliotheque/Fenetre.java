@@ -55,41 +55,67 @@ public class Fenetre extends JFrame{
 		textField.setPreferredSize( new Dimension( 100, 50 ) );
 		textField.setLocation(27, 200);
 		pan.add(textField);
-		JLabel lab = new JLabel("Resultat de votre recherche : "+nomlivre);
+		JLabel lab = new JLabel("Resultat de votre recherche : "+nomlivre+" - "+ array.size()+ " livre(s) trouvé(s)");
 		pan.add(lab);
 		lab.setLocation(27, 200);
 		lab.setSize(400, 14);
 		
 
 		searchResult.setTitle("Résultat recherche");
-		int coo = 220;
-	    for (int i = 0; i < array.size(); i++) {
-	    	
-	    	JLabel labList = new JLabel("<html>"+array.get(i).toString()+"<br/></html>");
+		if(array.size() == 0)
+		{
+			JLabel labList = new JLabel("Aucun livre trouvé");
 			pan.add(labList);
-			labList.setLocation(27, coo);
+			labList.setLocation(27, 220);
 			labList.setSize(400, 14);
-			coo += 20;
-	      }
+		}else {
+			int coo = 220;
+			int coo2 = 220;
+		    for (int i = 0; i < array.size(); i++) {
+		    	
+		    	JLabel labList = new JLabel("<html>"+array.get(i).toString()+"<br/></html>");
+				pan.add(labList);
+				labList.setLocation(27, coo);
+				labList.setSize(400, 14);
+				coo += 20;
+		      }
+		    try
+	        {           
+	            Connection cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root","");
+	            Statement st=cn.createStatement();
+	            ResultSet rs=st.executeQuery("select * from book Where Wording like '%"+nomlivre+"%'");
+	            
+	            while(rs.next())
+	            {
+          
+    	            Connection cn2=DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root","");
+    	            Statement st2=cn2.createStatement();
+    	            ResultSet rs2=st2.executeQuery("select * from author Where PK_ID = "+rs.getString("FK_ID_Author"));
+    	            
+    	            while(rs2.next())
+    	            {
+    	            	
+    	            	JLabel labList = new JLabel("par " + rs2.getString("First_Name") +" "+ rs2.getString("Last_Name"));
+    					pan.add(labList);
+    					labList.setLocation(250, coo2);
+    					labList.setSize(400, 14);
+    					System.out.println(coo2);
+    					coo2 += 20;
+    	            }
+
+	            }
+	        }
+		    catch(SQLException e)
+	        {
+	           System.out.println(e);
+	        }
+		    
+		}
+		
 		searchResult.setSize(800, 500);
 		searchResult.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		searchResult.setLocationRelativeTo(null);
-		String author = null;
-		try
-        {           
-            Connection cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root","");
-            Statement st=cn.createStatement();
-            ResultSet rs=st.executeQuery("select * from book Where Wording like '%"+nomlivre+"%'");
-            
-            while(rs.next())
-            {
-            	
-            }
-        }
-        catch(SQLException e)
-        {
-           System.out.println(e);
-        }
+
 
 	    bouton.addActionListener(new ActionListener() {
 

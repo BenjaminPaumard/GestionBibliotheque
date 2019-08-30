@@ -80,12 +80,12 @@ public class Livre {
             {
             	System.out.println(rs.getString("Wording"));
                 booksList.add(rs.getString("Wording"));
-            	ResultSet rsa=st.executeQuery("select * from author Where PK_ID like '"+rs.getInt("FK_ID_Author")+"'");
+            	/*ResultSet rsa=st.executeQuery("select * from author Where PK_ID like '"+rs.getInt("FK_ID_Author")+"'");
             	if(rsa.next()) {
             		System.out.println(rsa.getString("First_Name"));
             		System.out.println(rsa.getString("Last_Name"));
             	}
-            	Auteur auteur = new Auteur(rsa.getString("First_Name"),rsa.getString("Last_Name"));
+            	Auteur auteur = new Auteur(rsa.getString("First_Name"),rsa.getString("Last_Name"));*/
             }
         }
         catch(SQLException e)
