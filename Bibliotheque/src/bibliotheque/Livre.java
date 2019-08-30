@@ -65,13 +65,13 @@ public class Livre {
 	}
 	
 
-	
+	/*
 	public void rechercher(nomlivre)
 	{
 		
 		
 	}
-	
+	*/
 	public void louercalcul()
 	{
 		//depuis la classe client !
