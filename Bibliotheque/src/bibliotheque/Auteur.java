@@ -1,8 +1,11 @@
 package bibliotheque;
 
+import java.util.ArrayList;
+
 public class Auteur {
 	private String nom;
 	private String prenom;
+	private ArrayList<Livre> listeLivreEcrit;
 	
 	
 	public Auteur(String nom, String prenom) {
@@ -24,5 +27,9 @@ public class Auteur {
 	
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+	
+	public void ecrireUnLivre(Livre livre) {
+		this.listeLivreEcrit.add(livre);
 	}
 }

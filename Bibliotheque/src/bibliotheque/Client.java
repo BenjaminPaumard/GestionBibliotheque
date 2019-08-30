@@ -1,9 +1,11 @@
 package bibliotheque;
 
+import java.util.ArrayList;
+
 public class Client {
 	private String nom;
 	private String prenom;
-	private listArray<livre> listeLivreLouer;
+	private ArrayList<Livre> listeLivreLouer;
 	
 	
 	public Client(String nom, String prenom) {
@@ -25,5 +27,13 @@ public class Client {
 	
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+	
+	public void louerUnLivre(Livre livre) {
+		this.listeLivreLouer.add(livre);
+	}
+	
+	public void rendreLivre(int id){
+		this.listeLivreLouer.remove(id);
 	}
 }
