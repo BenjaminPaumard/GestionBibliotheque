@@ -3,6 +3,7 @@ package bibliotheque;
 public class Client {
 	private String nom;
 	private String prenom;
+	private listArray<livre> listeLivreLouer;
 	
 	
 	public Client(String nom, String prenom) {
