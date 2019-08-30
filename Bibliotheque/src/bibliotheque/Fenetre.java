@@ -50,14 +50,14 @@ public class Fenetre extends JFrame{
 	  	JButton bouton = new JButton("Rechercher");
 	  	pan.add(bouton);
 	  	pan.setLayout(null);
-	  	bouton.setBounds(100, 100, 100, 100);
+	  	bouton.setBounds(127, 10, 125, 25);
 		JTextField textField = new JTextField();
 		textField.setPreferredSize( new Dimension( 100, 50 ) );
-		textField.setLocation(27, 200);
+		textField.setBounds(27, 10, 100, 25);
 		pan.add(textField);
 		JLabel lab = new JLabel("Resultat de votre recherche : "+nomlivre+" - "+ array.size()+ " livre(s) trouvé(s)");
 		pan.add(lab);
-		lab.setLocation(27, 200);
+		lab.setLocation(27, 50);
 		lab.setSize(400, 14);
 		
 
@@ -69,8 +69,8 @@ public class Fenetre extends JFrame{
 			labList.setLocation(27, 220);
 			labList.setSize(400, 14);
 		}else {
-			int coo = 220;
-			int coo2 = 220;
+			int coo = 70;
+			int coo2 = 70;
 		    for (int i = 0; i < array.size(); i++) {
 		    	
 		    	JLabel labList = new JLabel("<html>"+array.get(i).toString()+"<br/></html>");
