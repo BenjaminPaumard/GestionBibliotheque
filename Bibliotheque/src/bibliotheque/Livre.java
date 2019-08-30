@@ -57,7 +57,7 @@ public class Livre {
 	}
 	
 	public void setQuantite(int quantite){
-		this.titre = quantite;
+		this.quantite = quantite;
 	}
 	
 	public boolean getDisponible(){
