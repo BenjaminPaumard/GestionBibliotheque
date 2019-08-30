@@ -83,7 +83,8 @@ public class Livre {
         {
            System.out.println(e);
         }
-		return "coucou";
+		Fenetre.rechercherList();
+		return "temp";
 	}
 	
 	
