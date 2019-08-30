@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -20,14 +20,11 @@ public class Fenetre extends JFrame{
   public Fenetre(){
   	JPanel pan = new JPanel();
 
-  	JButton bouton = new JButton("Mon bouton");
+  	JButton bouton = new JButton("Rechercher");
 	JTextField textField = new JTextField();
 	textField.setPreferredSize( new Dimension( 50, 20 ) );
 	pan.add(textField);
-	JLabel lab = new JLabel("Test");
-
-	pan.add(lab);
-    this.setTitle("Animation");
+    this.setTitle("Par titre de livre");
     this.setSize(300, 150);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
@@ -38,7 +35,6 @@ public class Fenetre extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
         	String x = textField.getText();
-        	System.out.println (x);
         	Livre.rechercher(x);
         }
     });
@@ -48,19 +44,22 @@ public class Fenetre extends JFrame{
     this.setVisible(true);
   }  
   
-  public static String rechercherList()
+  public static String rechercherList(ArrayList array,String nomlivre)
 	{
 	  Fenetre searchResult = new Fenetre();
 	  JPanel pan = new JPanel();
-
-	  	JButton bouton = new JButton("Mon bouton");
+	  	JButton bouton = new JButton("Rechercher");
 		JTextField textField = new JTextField();
 		textField.setPreferredSize( new Dimension( 50, 20 ) );
 		pan.add(textField);
-		JLabel lab = new JLabel("Test");
+		JLabel lab = new JLabel("Resultat de votre recherche : "+nomlivre);
 
 		pan.add(lab);
-		searchResult.setTitle("julien");
+		searchResult.setTitle("Résultat recherche");
+	    for (int i = 0; i < array.size(); i++) {
+	    	JLabel labList = new JLabel(array.get(i).toString()+ System.lineSeparator());
+			pan.add(labList);
+	      }
 		searchResult.setSize(300, 150);
 		searchResult.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		searchResult.setLocationRelativeTo(null);
@@ -71,7 +70,6 @@ public class Fenetre extends JFrame{
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	        	String x = textField.getText();
-	        	System.out.println (x);
 	        	Livre.rechercher(x);
 	        }
 	    });
@@ -79,6 +77,7 @@ public class Fenetre extends JFrame{
 	    pan.add(bouton);
 	    searchResult.setContentPane(pan);
 	    searchResult.setVisible(true);
+
 		return "coucou";
 	}
   
