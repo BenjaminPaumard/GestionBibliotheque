@@ -19,13 +19,12 @@ public class Fenetre extends JFrame{
   
   public Fenetre(){
   	JPanel pan = new JPanel();
-
   	JButton bouton = new JButton("Rechercher");
 	JTextField textField = new JTextField();
 	textField.setPreferredSize( new Dimension( 50, 20 ) );
 	pan.add(textField);
-    this.setTitle("Par titre de livre");
-    this.setSize(300, 150);
+   // this.setTitle("Par titre de livre");
+    this.setSize(800, 500);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setLocationRelativeTo(null);
 
@@ -49,18 +48,24 @@ public class Fenetre extends JFrame{
 	  Fenetre searchResult = new Fenetre();
 	  JPanel pan = new JPanel();
 	  	JButton bouton = new JButton("Rechercher");
+	  	pan.setLayout(null);
+	  	bouton.setBounds(100, 100, 100, 100);
 		JTextField textField = new JTextField();
 		textField.setPreferredSize( new Dimension( 50, 20 ) );
 		pan.add(textField);
 		JLabel lab = new JLabel("Resultat de votre recherche : "+nomlivre);
-
 		pan.add(lab);
+		lab.setLocation(27, 20);
+		lab.setSize(86, 14);
+		
+
 		searchResult.setTitle("Résultat recherche");
 	    for (int i = 0; i < array.size(); i++) {
-	    	JLabel labList = new JLabel(array.get(i).toString()+ System.lineSeparator());
+	    	
+	    	JLabel labList = new JLabel("<html>"+array.get(i).toString()+"<br/></html>");
 			pan.add(labList);
 	      }
-		searchResult.setSize(300, 150);
+		searchResult.setSize(800, 500);
 		searchResult.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		searchResult.setLocationRelativeTo(null);
 
